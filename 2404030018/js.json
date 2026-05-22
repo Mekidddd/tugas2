@@ -1,0 +1,43 @@
+{
+  "name": "Handika Dwi Cahya",
+  "title": "Mahasiswa Teknik Informatika & Lulusan Multimedia",
+  "description": "Memiliki minat dalam Web Development, Teknologi Digital, dan Desain Kreatif.",
+  "phone": "085175361654",
+  "email": "handikadc16@gmail.com",
+  "instagram": "https://www.instagram.com/mekid__/",
+  "location": "Tangerang, Banten, Indonesia",
+
+  "education": [
+    {
+      "school": "SD Negeri Periuk 4",
+      "year": "2012 - 2018",
+      "description": "Mengikuti kegiatan Pramuka dan Pentas Seni di Pusat Pendidikan Kota Tangerang."
+    },
+    {
+      "school": "SMP Negeri 3 Pasar Kemis",
+      "year": "2018 - 2021",
+      "description": "Aktif pada kegiatan ekstrakurikuler Pramuka."
+    },
+    {
+      "school": "SMK Bhakti Anindya",
+      "year": "2021 - 2024",
+      "major": "Multimedia",
+      "description": "Aktif dalam Organisasi Siswa Intra Sekolah (OSIS)."
+    }
+  ],
+
+  "skills": [
+    "Web Development",
+    "Graphic Design",
+    "Multimedia Editing",
+    "Microsoft Office",
+    "Teamwork",
+    "Fast Learner"
+  ],
+
+  "socials": {
+    "whatsapp": "https://wa.me/6285175361654",
+    "instagram": "https://www.instagram.com/mekid__/",
+    "email": "mailto:handikadc16@gmail.com"
+  }
+}

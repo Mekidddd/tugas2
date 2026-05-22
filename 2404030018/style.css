@@ -1,0 +1,10 @@
+.contact-card{
+    transition:.4s;
+}
+
+.contact-card:hover{
+    transform:translateY(-10px);
+    box-shadow:
+    0 0 20px rgba(59,130,246,.4),
+    0 0 40px rgba(59,130,246,.2);
+}
