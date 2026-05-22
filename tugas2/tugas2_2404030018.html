@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Form Pendaftaran Mahasiswa</title>
+
+<style>
+/* ===== GLOBAL ===== */
+* {
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background:
+        radial-gradient(circle at top left, rgba(99,102,241,0.25), transparent 40%),
+        radial-gradient(circle at bottom right, rgba(16,185,129,0.15), transparent 50%),
+        #0b0f1a;
+    color: #e5e7eb;
+}
+
+/* ===== GLASS CONTAINER ===== */
+.container {
+    width: 850px;
+    padding: 30px;
+    border-radius: 18px;
+
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    backdrop-filter: blur(18px);
+
+    box-shadow: 0 25px 70px rgba(0,0,0,0.6);
+}
+
+/* ===== TITLE ===== */
+.title {
+    text-align: center;
+    font-size: 26px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.subtitle {
+    text-align: center;
+    font-size: 13px;
+    color: #9ca3af;
+    margin-bottom: 25px;
+}
+
+/* ===== STEP ===== */
+.step { display: none; }
+.step.active { display: block; }
+
+/* ===== GRID ===== */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.full {
+    grid-column: span 2;
+}
+
+/* ===== LABEL ===== */
+label {
+    font-size: 13px;
+    color: #cbd5e1;
+}
+
+/* ===== INPUT ===== */
+input, select, textarea {
+    width: 100%;
+    padding: 11px 12px;
+    margin-top: 6px;
+
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.08);
+
+    background: rgba(255,255,255,0.04);
+    color: white;
+
+    outline: none;
+    transition: 0.2s;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: rgba(99,102,241,0.6);
+    box-shadow: 0 0 0 3px rgba(99,102,241,0.15);
+}
+
+/* ===== BUTTONS ===== */
+.buttons {
+    margin-top: 22px;
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    padding: 10px 16px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.2s ease;
+}
+
+.next, .submit {
+    background: linear-gradient(135deg, #6366f1, #3b82f6);
+    color: white;
+}
+
+.back {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.reset {
+    background: rgba(239,68,68,0.8);
+    color: white;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+/* ===== SMALL ANIMATION ===== */
+.container {
+    animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<form>
+
+<div class="title">Form Pendaftaran Mahasiswa</div>
+<div class="subtitle">Silakan isi data dengan lengkap & benar</div>
+
+<!-- STEP 1 -->
+<div class="step active">
+<h3 style="text-align:center;">Data Mahasiswa</h3>
+
+<div class="form-grid">
+<div><label>Nama Lengkap</label><input type="text"></div>
+<div><label>Tempat Lahir</label><input type="text"></div>
+<div><label>Tanggal Lahir</label><input type="date"></div>
+<div>
+<label>Jenis Kelamin</label>
+<select>
+<option>Laki-laki</option>
+<option>Perempuan</option>
+</select>
+</div>
+<div class="full">
+<label>Alamat</label>
+<textarea rows="3"></textarea>
+</div>
+</div>
+
+<div class="buttons">
+<button type="button" class="next" onclick="nextStep()">Next →</button>
+</div>
+</div>
+
+<!-- STEP 2 -->
+<div class="step">
+<h3 style="text-align:center;">Data Orang Tua</h3>
+
+<div class="form-grid">
+<div><label>Nama Orang Tua</label><input type="text"></div>
+<div><label>Pekerjaan</label><input type="text"></div>
+<div class="full"><label>Alamat</label><textarea rows="3"></textarea></div>
+</div>
+
+<div class="buttons">
+<button type="button" class="back" onclick="prevStep()">← Back</button>
+<button type="reset" class="reset">Reset</button>
+<button type="submit" class="submit">Submit</button>
+</div>
+</div>
+
+</form>
+
+</div>
+
+<script>
+let currentStep = 0;
+const steps = document.querySelectorAll(".step");
+
+function showStep(i){
+    steps.forEach((s, index)=>{
+        s.classList.toggle("active", index === i);
+    });
+}
+
+function nextStep(){
+    if(currentStep < steps.length - 1){
+        currentStep++;
+        showStep(currentStep);
+    }
+}
+
+function prevStep(){
+    if(currentStep > 0){
+        currentStep--;
+        showStep(currentStep);
+    }
+}
+</script>
+
+</body>
+</html>

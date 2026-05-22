@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profil Handika</title>
+
+<!-- FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<!-- ICON -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:linear-gradient(135deg,#020617,#0f172a,#1e293b);
+    color:white;
+    overflow-x:hidden;
+}
+
+/* LOADING */
+#loader{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:#020617;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+}
+
+.spinner{
+    width:65px;
+    height:65px;
+    border:6px solid rgba(255,255,255,0.15);
+    border-top:6px solid #38bdf8;
+    border-radius:50%;
+    animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+    100%{
+        transform:rotate(360deg);
+    }
+}
+
+/* BACKGROUND EFFECT */
+.bg-blur1,
+.bg-blur2{
+    position:fixed;
+    border-radius:50%;
+    filter:blur(120px);
+    z-index:-1;
+}
+
+.bg-blur1{
+    width:300px;
+    height:300px;
+    background:#38bdf8;
+    top:-100px;
+    left:-100px;
+}
+
+.bg-blur2{
+    width:350px;
+    height:350px;
+    background:#9333ea;
+    bottom:-120px;
+    right:-100px;
+}
+
+/* NAVBAR */
+nav{
+    position:sticky;
+    top:0;
+    width:100%;
+    padding:20px;
+    text-align:center;
+    background:rgba(0,0,0,0.25);
+    backdrop-filter:blur(10px);
+    z-index:1000;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin:0 16px;
+    font-weight:500;
+    position:relative;
+    transition:0.3s;
+    cursor:pointer;
+}
+
+nav a:hover{
+    color:#38bdf8;
+}
+
+nav a::after{
+    content:'';
+    width:0%;
+    height:2px;
+    background:#38bdf8;
+    position:absolute;
+    left:0;
+    bottom:-6px;
+    transition:0.3s;
+}
+
+nav a:hover::after{
+    width:100%;
+}
+
+/* SECTION */
+.section{
+    display:none;
+    min-height:85vh;
+    padding:40px 20px;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    animation:fade 0.6s;
+}
+
+.active{
+    display:flex;
+    flex-direction:column;
+}
+
+@keyframes fade{
+    from{
+        opacity:0;
+        transform:translateY(25px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* CARD */
+.card{
+    width:100%;
+    max-width:600px;
+    padding:35px;
+    border-radius:28px;
+    background:rgba(255,255,255,0.07);
+    backdrop-filter:blur(14px);
+    box-shadow:0 0 30px rgba(0,0,0,0.4);
+    transition:0.4s;
+}
+
+.card:hover{
+    transform:translateY(-7px);
+    box-shadow:0 0 40px rgba(56,189,248,0.25);
+}
+
+/* HOME */
+.hero-icon{
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-bottom:25px;
+    background:linear-gradient(135deg,#38bdf8,#9333ea);
+    box-shadow:0 0 35px rgba(56,189,248,0.5);
+    animation:float 3s ease-in-out infinite;
+}
+
+.hero-icon i{
+    font-size:50px;
+}
+
+@keyframes float{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-10px);
+    }
+}
+
+h1{
+    font-size:45px;
+    margin-bottom:15px;
+}
+
+h2{
+    margin-bottom:20px;
+    color:#38bdf8;
+}
+
+.subtitle{
+    color:#cbd5e1;
+    font-size:18px;
+}
+
+/* HOBI */
+.hobi-list{
+    list-style:none;
+}
+
+.hobi-list li{
+    margin:12px 0;
+    padding:15px;
+    border-radius:14px;
+    background:rgba(255,255,255,0.1);
+    transition:0.3s;
+}
+
+.hobi-list li:hover{
+    transform:scale(1.03);
+    background:rgba(255,255,255,0.18);
+}
+
+/* SKILL */
+.skill{
+    margin:22px 0;
+    text-align:left;
+}
+
+.bar{
+    width:100%;
+    height:10px;
+    background:rgba(255,255,255,0.12);
+    border-radius:30px;
+    overflow:hidden;
+    margin-top:10px;
+}
+
+.fill{
+    height:100%;
+    border-radius:30px;
+    animation:load 2s ease;
+}
+
+.design{
+    width:85%;
+    background:linear-gradient(90deg,#38bdf8,#0ea5e9);
+}
+
+.web{
+    width:80%;
+    background:linear-gradient(90deg,#9333ea,#c084fc);
+}
+
+.office{
+    width:90%;
+    background:linear-gradient(90deg,#22c55e,#4ade80);
+}
+
+@keyframes load{
+    from{
+        width:0;
+    }
+}
+
+/* CONTACT */
+.contact-item{
+    margin:15px 0;
+    padding:16px;
+    border-radius:14px;
+    background:rgba(255,255,255,0.1);
+    transition:0.3s;
+}
+
+.contact-item:hover{
+    transform:translateY(-4px);
+    background:rgba(255,255,255,0.18);
+}
+
+.contact-item i{
+    color:#38bdf8;
+    margin-right:10px;
+}
+
+/* BUTTON */
+.btn{
+    margin-top:25px;
+    display:inline-block;
+    padding:12px 25px;
+    border-radius:40px;
+    background:linear-gradient(135deg,#38bdf8,#9333ea);
+    color:white;
+    text-decoration:none;
+    transition:0.3s;
+    box-shadow:0 0 20px rgba(56,189,248,0.3);
+}
+
+.btn:hover{
+    transform:scale(1.05);
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+
+    h1{
+        font-size:32px;
+    }
+
+    nav a{
+        margin:0 8px;
+        font-size:14px;
+    }
+
+    .card{
+        padding:25px;
+    }
+
+    .hero-icon{
+        width:100px;
+        height:100px;
+    }
+
+    .hero-icon i{
+        font-size:40px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- BACKGROUND EFFECT -->
+<div class="bg-blur1"></div>
+<div class="bg-blur2"></div>
+
+<!-- LOADING -->
+<div id="loader">
+    <div class="spinner"></div>
+</div>
+
+<!-- NAVBAR -->
+<nav>
+    <a onclick="showPage('home')">Home</a>
+    <a onclick="showPage('tentang')">Tentang</a>
+    <a onclick="showPage('hobi')">Hobi</a>
+    <a onclick="showPage('skill')">Skill</a>
+    <a onclick="showPage('contact')">Contact</a>
+</nav>
+
+<!-- HOME -->
+<div id="home" class="section active">
+
+    <div class="hero-icon">
+        <i class="fas fa-code"></i>
+    </div>
+
+    <h1>Hi, Saya Handika</h1>
+
+    <p class="subtitle">
+        Mahasiswa Teknik Informatika • Semester 4
+    </p>
+
+    <a href="https://www.instagram.com/mekid__?igsh=dTRhZm03OXhkemdz&utm_source=qr"
+    target="_blank"
+    class="btn">
+        Explore More
+    </a>
+
+</div>
+
+<!-- TENTANG -->
+<div id="tentang" class="section">
+
+    <div class="card">
+
+        <h2>
+            <i class="fas fa-user"></i>
+            Tentang Saya
+        </h2>
+
+        <p>
+            Saya Handika Dwi Cahya dari Fakultas Teknik,
+            Program Studi Teknik Informatika di
+            Universitas Islam Syekh Yusuf.
+            Saat ini sedang menjalani studi semester 4
+            dan tertarik pada dunia teknologi,
+            desain web, serta eksplorasi hal baru.
+        </p>
+
+    </div>
+
+</div>
+
+<!-- HOBI -->
+<div id="hobi" class="section">
+
+    <div class="card">
+
+        <h2>
+            <i class="fas fa-gamepad"></i>
+            Hobi
+        </h2>
+
+        <ul class="hobi-list">
+
+            <li>
+                <i class="fas fa-gamepad"></i>
+                Gaming
+            </li>
+
+            <li>
+                <i class="fas fa-lightbulb"></i>
+                Eksplorasi Hal Baru
+            </li>
+
+            <li>
+                <i class="fas fa-table-tennis-paddle-ball"></i>
+                Badminton
+            </li>
+
+        </ul>
+
+    </div>
+
+</div>
+
+<!-- SKILL -->
+<div id="skill" class="section">
+
+    <div class="card">
+
+        <h2>
+            <i class="fas fa-laptop-code"></i>
+            Skill
+        </h2>
+
+        <div class="skill">
+            <p>Desain Grafis</p>
+
+            <div class="bar">
+                <div class="fill design"></div>
+            </div>
+        </div>
+
+        <div class="skill">
+            <p>Desain Web</p>
+
+            <div class="bar">
+                <div class="fill web"></div>
+            </div>
+        </div>
+
+        <div class="skill">
+            <p>Microsoft Office</p>
+
+            <div class="bar">
+                <div class="fill office"></div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- CONTACT -->
+<div id="contact" class="section">
+
+    <div class="card">
+
+        <h2>
+            <i class="fas fa-address-book"></i>
+            Contact
+        </h2>
+
+        <div class="contact-item">
+            <i class="fab fa-instagram"></i>
+            Instagram :
+            <a href="https://www.instagram.com/mekid__?igsh=dTRhZm03OXhkemdz&utm_source=qr"
+            target="_blank"
+            style="color:white;text-decoration:none;">
+            mekid__
+            </a>
+        </div>
+
+        <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            No. Telp : 085175361654
+        </div>
+
+        <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            Email : handikadc16@gmail.com
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+/* LOADER */
+window.onload = function(){
+    document.getElementById("loader").style.display = "none";
+}
+
+/* NAVIGATION */
+function showPage(pageId){
+
+    let pages = document.querySelectorAll('.section');
+
+    pages.forEach(function(page){
+        page.classList.remove('active');
+    });
+
+    document.getElementById(pageId).classList.add('active');
+}
+
+</script>
+
+</body>
+</html>
